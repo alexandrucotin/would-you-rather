@@ -1,0 +1,10 @@
+.container{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 2rem 4rem;
+}
+
+.questions-list{
+    width: 45%;
+}

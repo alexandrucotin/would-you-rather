@@ -1,0 +1,39 @@
+.question-card {
+  display: flex;
+  align-items: center;
+  margin: 2rem 0;
+}
+.question-avatar {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.question-avatar .name {
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+}
+
+.question-avatar .avatar {
+  width: 100px;
+  height: 100px;
+  background-color: lightpink;
+  border-radius: 50px;
+}
+
+.question-content {
+  margin: 0 0 0 2rem;
+  width: 40%;
+}
+
+.question-content .question-text .wur {
+  border-bottom: 1px solid lightslategrey;
+}
+
+.question-content .question-text .question-question {
+  margin: 0.7rem 0;
+}
+
+.question-content .button  {
+    width: 100%;
+}
