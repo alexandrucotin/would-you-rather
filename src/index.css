@@ -1,0 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Open Sans", sans-serif;
+  }
+  
+  h1 h2 h3 h4 h5 h6 {
+    font-family: "Raleway", sans-serif;
+  }
+  
+  a{
+    text-decoration: none;
+    color: black;
+  }
+  
+  ul {
+    list-style: none;
+  }
+
+  .button{
+    border: none;
+    background-color: lightslategray;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+  }
