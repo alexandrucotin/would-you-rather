@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import "./question.css"
+import "./question.css";
+import { Link } from "react-router-dom";
 class Question extends Component {
   render() {
     return (
@@ -13,7 +14,9 @@ class Question extends Component {
             <p className="wur">Would you rather?</p>
             <p className="question-question">.... or ....</p>
           </div>
-          <button className="button question">View poll</button>
+          <Link to="/poll" className="button question">
+            View poll
+          </Link>
         </div>
       </div>
     );
