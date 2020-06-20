@@ -1,3 +1,75 @@
-.poll-container{
-    display: flex;
+.poll-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  padding: 4rem;
+}
+
+
+/* Information about the question */
+.info {
+  display: flex;
+  margin: 2rem 0;
+  width: 100%;
+  height: 30%;
+  align-items: center;
+}
+
+.avatar-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  background-color: lightsalmon;
+}
+
+.avatar-container {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.avatar-name {
+  margin-bottom: 0.8rem;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.question {
+  font-family: "Raleway", sans-serif;
+  font-weight: bold;
+  font-size: 3.5rem;
+  width: 100%;
+  text-align: center;
+}
+
+
+/* Answers container */
+
+
+.answer-container {
+  display: flex;
+  width: 80%;
+  height: 50%;
+}
+
+.answer {
+  padding: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 1rem;
+  border-radius: 50px;
+  color: white;
+  font-weight: 500;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.first {
+  background-color: lightseagreen;
+}
+
+.second {
+  background-color: lightskyblue;
 }

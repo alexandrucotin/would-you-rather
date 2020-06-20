@@ -14,7 +14,7 @@ class Question extends Component {
             <p className="wur">Would you rather?</p>
             <p className="question-question">.... or ....</p>
           </div>
-          <Link to="/poll" className="button question">
+          <Link to="/poll" className="button">
             View poll
           </Link>
         </div>
