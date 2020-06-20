@@ -15,17 +15,12 @@ function Navbar(props) {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/" exact>
+          <NavLink to="/newquestion" exact>
             new question
           </NavLink>
         </li>
         <li>
-          <NavLink to="/" exact>
-            new question
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/" exact>
+          <NavLink to="/leaderboard" exact>
             leaderboard
           </NavLink>
         </li>
