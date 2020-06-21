@@ -1,0 +1,41 @@
+.user-container {
+  display: flex;
+  margin: 2rem 0;
+}
+
+.content-container {
+  display: flex;
+}
+
+.personal-info {
+  display: flex;
+  margin: 0 5rem 0 2rem;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user-name {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.user-answered {
+  margin-top: 0.8rem;
+  font-weight: lighter;
+}
+
+.user-created {
+  font-weight: lighter;
+}
+
+.score-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.user-score {
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+}

@@ -1,0 +1,20 @@
+.leaderboard-container{
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.leaderboard-title{
+    font-size: 4rem;
+    margin-bottom: 2rem;
+}
+
+.leaderboard-list{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
