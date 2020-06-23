@@ -1,11 +1,17 @@
 import React, { Fragment } from "react";
-import "./app.css";
-import Dashboard from "../dashboard";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { connect } from "react-redux";
+import { handleInitialData } from "../../actions/shared";
+
+// CSS FILE
+import "./app.css";
+
+// COMPONENTS
+import Dashboard from "../dashboard";
 import Navbar from "../navbar";
-import Poll from "../poll"
-import NewQuestion from "../newQuestion"
-import Leaderboard from "../leaderboard"
+import Poll from "../poll";
+import NewQuestion from "../newQuestion";
+import Leaderboard from "../leaderboard";
 
 function App() {
   return (
@@ -14,7 +20,7 @@ function App() {
         <Navbar />
         <div className="App">
           <Route path="/" exact component={Dashboard} />
-          <Route path="/poll" exact component={Poll} />
+          <Route path="/question/:id" exact component={Poll} />
           <Route path="/newquestion" exact component={NewQuestion} />
           <Route path="/leaderboard" exact component={Leaderboard} />
         </div>

@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import "./newQuestion.css";
 
 class NewQuestion extends Component {
+  state = {
+    questionOne: "",
+    questionTwo: "",
+  };
   render() {
     return (
       <div className="new-question-container">
@@ -17,7 +21,9 @@ class NewQuestion extends Component {
             <input className="answer-option" />
           </div>
         </div>
-        <button className="button" type="submit">Submit</button>
+        <button className="button" type="submit">
+          Submit
+        </button>
       </div>
     );
   }

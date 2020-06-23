@@ -4,6 +4,9 @@ import "./dashboard.css";
 
 class Dashboard extends Component {
   render() {
+    // if (!authedUser) {
+    //   return <Redirect to="/login" />;
+    // }
     return (
       <div className="container">
         <div className="questions-list">

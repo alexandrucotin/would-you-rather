@@ -1,6 +1,6 @@
-const ADD_QUESTION = "ADD_QUESTION";
-const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
-const TOGGLE_QUESTION = "TOGGLE_QUESTION";
+export const ADD_QUESTION = "ADD_QUESTION";
+export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
+export const TOGGLE_QUESTION = "TOGGLE_QUESTION";
 
 function addQuestion(question) {
   return {
@@ -16,11 +16,11 @@ export function receiveQuestions(questions) {
   };
 }
 
-function toggleQuestion({ id, authedUser, optionChoosed }) {
+function toggleQuestion({ id, authedUser, optionChosen }) {
   return {
     type: TOGGLE_QUESTION,
     id,
     authedUser,
-    optionChoosed,
+    optionChosen,
   };
 }
