@@ -9,8 +9,8 @@ export function handleInitialData() {
   return (dispatch) => {
     dispatch(showLoading());
     return _getQuestions().then((questions) => {
-      dispatch(receiveQuestions(questions));
       dispatch(setAuthedUser(AUTHED_ID));
+      dispatch(receiveQuestions(questions));
       dispatch(hideLoading());
     });
   };

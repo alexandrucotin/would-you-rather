@@ -1,6 +1,7 @@
-import React, { Fragment } from "react";
+import React, { Fragment, Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
+
 import { handleInitialData } from "../../actions/shared";
 
 // CSS FILE
@@ -13,22 +14,39 @@ import Poll from "../poll";
 import NewQuestion from "../newQuestion";
 import Leaderboard from "../leaderboard";
 import Login from "../login";
+import LoadingBar from "react-redux-loading";
 
-function App() {
-  return (
-    <Router>
-      <Fragment>
-        <Navbar />
-        <div className="App">
-          <Route path="/" exact component={Dashboard} />
-          <Route path="/question/:id" exact component={Poll} />
-          <Route path="/newquestion" exact component={NewQuestion} />
-          <Route path="/leaderboard" exact component={Leaderboard} />
-          <Route path="/login" exact component={Login} />
-        </div>
-      </Fragment>
-    </Router>
-  );
+class App extends Component {
+  componentDidMount() {
+    this.props.dispatch(handleInitialData());
+  }
+
+  render() {
+    const { loading } = this.props;
+    return (
+      <Router>
+        <Fragment>
+          <LoadingBar />
+          {loading === true ? null : (
+            <div className="App">
+              <Navbar />
+              <Route path="/" exact component={Dashboard} />
+              <Route path="/question/:id" exact component={Poll} />
+              <Route path="/newquestion" exact component={NewQuestion} />
+              <Route path="/leaderboard" exact component={Leaderboard} />
+              <Route path="/login" exact component={Login} />
+            </div>
+          )}
+        </Fragment>
+      </Router>
+    );
+  }
 }
 
-export default App;
+function mapStateToProps({ authedUser }) {
+  return {
+    loading: authedUser === null
+  };
+}
+
+export default connect(mapStateToProps)(App);
