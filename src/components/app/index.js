@@ -12,6 +12,7 @@ import Navbar from "../navbar";
 import Poll from "../poll";
 import NewQuestion from "../newQuestion";
 import Leaderboard from "../leaderboard";
+import Login from "../login";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/question/:id" exact component={Poll} />
           <Route path="/newquestion" exact component={NewQuestion} />
           <Route path="/leaderboard" exact component={Leaderboard} />
+          <Route path="/login" exact component={Login} />
         </div>
       </Fragment>
     </Router>
