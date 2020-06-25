@@ -5,7 +5,7 @@ class Login extends Component {
   render() {
     return (
       <div className="login-container">
-        <h3 className="login-title">Login</h3>
+        <h3 className="title">Login</h3>
         <select className="login-dropdown">
           <option className="dropdown-option">Sarah</option>
           <option className="dropdown-option">Tyler</option>
