@@ -1,23 +1,28 @@
 import React, { Component } from "react";
 import "./poll.css";
+import { connect } from "react-redux";
 
 class Poll extends Component {
   render() {
+    const { questions } = this.props;
+    const { id } = this.props.match.params;
     return (
       <div className="poll-container">
         <div className="info">
           <div className="avatar-container">
             <div className="avatar-img"></div>
-            <p className="avatar-name">Alex Cotin asks:</p>
+
+            {console.log("La domanda e': ", questions[id])}
+            <p className="avatar-name">{questions[id].author} asks:</p>
           </div>
           <p className="question">Would you rather ...</p>
         </div>
         <div className="answer-container">
           <div className="answer first">
-            <p>find $50 yourself</p>
+            <p></p>
           </div>
           <div className="answer second">
-            <p>have your best friend find $500</p>
+            <p></p>
           </div>
         </div>
       </div>
@@ -25,4 +30,9 @@ class Poll extends Component {
   }
 }
 
-export default Poll;
+function mapStateToProps({ questions }) {
+  return {
+    questions,
+  };
+}
+export default connect(mapStateToProps)(Poll);

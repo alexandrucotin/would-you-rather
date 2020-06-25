@@ -1,9 +1,15 @@
 import React, { Component } from "react";
+import { withRouter} from "react-router-dom"
 import "./question.css";
-import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
+
 class Question extends Component {
+  toQuestion = (e, id) => {
+    e.preventDefault();
+    this.props.history.push(`/question/${id}`);
+  };
+
   render() {
     const { question } = this.props;
     return (
@@ -19,9 +25,10 @@ class Question extends Component {
               {question.optionOne.text} <b>or</b> {question.optionTwo.text}
             </p>
           </div>
-          <Link to={"/question/:"+question.id} className="button">
-            View poll
-          </Link>
+          <button
+            className="button"
+            onClick={(e) => this.toQuestion(e, question.id)}
+          >View poll</button>
         </div>
       </div>
     );
@@ -36,4 +43,4 @@ function mapStateToProps({ questions }, { id }) {
   };
 }
 
-export default connect(mapStateToProps)(Question);
+export default withRouter(connect(mapStateToProps)(Question));
