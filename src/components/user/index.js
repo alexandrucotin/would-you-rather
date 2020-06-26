@@ -1,21 +1,27 @@
 import React, { Component } from "react";
 import "./user.css";
+import { connect } from "react-redux";
 
 class User extends Component {
   render() {
+    const { user } = this.props;
     return (
       <li className="user-container">
-        <div className="avatar-img"></div>
+        <img className="avatar" src={user.avatarURL} alt={user.name} />
         <div className="content-container">
           <div className="personal-info">
-            <p className="user-name">Alex</p>
-            <p className="user-answered">Answered questions: 7</p>
-            <p className="user-created">Created questions: 3</p>
+            <p className="user-name">{user.name}</p>
+            <p className="user-answered">
+              Answered questions: {Object.keys(user.answers).length}
+            </p>
+            <p className="user-created">
+              Created questions: {user.questions.length}
+            </p>
           </div>
           <div className="score-container">
             <p className="user-score">Score</p>
             <div className="points">
-              <p>10</p>
+              <p>{Object.keys(user.answers).length + user.questions.length}</p>
             </div>
           </div>
         </div>
@@ -24,4 +30,11 @@ class User extends Component {
   }
 }
 
-export default User;
+function mapStateToProps({ users }, { id }) {
+  const user = users[id];
+  return {
+    user,
+  };
+}
+
+export default connect(mapStateToProps)(User);
