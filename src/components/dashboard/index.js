@@ -14,7 +14,7 @@ class Dashboard extends Component {
       return (
         <div className="container">
           <div className="questions-list">
-            <h3>Unanswer questions:</h3>
+            <h3 className="title">Unanswer questions</h3>
             {Object.keys(questions).map((key) => {
               if (
                 questions[key].optionOne.votes.includes(authedUser) === false &&
@@ -30,7 +30,7 @@ class Dashboard extends Component {
             })}
           </div>
           <div className="questions-list">
-            <h3>Answer questions:</h3>
+            <h3 className="title">Answer questions</h3>
             {Object.keys(questions).map((key) => {
               if (
                 questions[key].optionOne.votes.includes(authedUser) === true ||

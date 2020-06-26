@@ -15,15 +15,17 @@ class Question extends Component {
     return (
       <div className="question-card">
         <div className="question-avatar">
-          <img className="avatar" src={user.avatarURL} alt={user.name}/>
+          <img className="avatar" src={user.avatarURL} alt={user.name} />
           <p className="name">{user.name}</p>
         </div>
         <div className="question-content">
           <div className="question-text">
             <p className="wur">Would you rather?</p>
-            <p className="question-question">
-              {question.optionOne.text} <b>or</b> {question.optionTwo.text}
-            </p>
+            <div className="question-question">
+              <p>{question.optionOne.text}</p>
+              <b>or</b>
+              <p>{question.optionTwo.text}</p>
+            </div>
           </div>
           <button
             className="button"

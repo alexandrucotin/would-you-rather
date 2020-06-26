@@ -3,6 +3,7 @@
   align-items: center;
   margin: 2rem 0;
 }
+
 .question-avatar {
   display: flex;
   flex-direction: column-reverse;
@@ -23,7 +24,6 @@
 
 .question-content {
   margin: 0 0 0 2rem;
-  width: 40%;
 }
 
 .question-content .question-text .wur {
@@ -36,4 +36,9 @@
 
 .question-content .button {
   width: 100%;
+}
+
+
+.question-question p {
+  font-size: 0.8rem;
 }
