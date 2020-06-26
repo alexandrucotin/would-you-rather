@@ -4,16 +4,16 @@ import { connect } from "react-redux";
 
 class Poll extends Component {
   render() {
-    const { questions } = this.props;
+    const { questions, users } = this.props;
     const { id } = this.props.match.params;
     const question = questions[id]
+    const user = users[question.author]
     return (
       <div className="poll-container">
         <div className="info">
           <div className="avatar-container">
-            <div className="avatar-img"></div>
-            {console.log("La domanda e': ", question.id)}
-            <p className="avatar-name"> {question.author} asks:</p>
+          <img className="avatar" src={user.avatarURL} alt={user.name}/>
+            <p className="avatar-name"> {user.name} asks:</p>
           </div>
           <p className="question">Would you rather ...</p>
         </div>
@@ -30,9 +30,10 @@ class Poll extends Component {
   }
 }
 
-function mapStateToProps({ questions }) {
+function mapStateToProps({ questions, users }) {
   return {
     questions,
+    users
   };
 }
 export default connect(mapStateToProps)(Poll);

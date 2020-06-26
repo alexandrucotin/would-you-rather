@@ -14,7 +14,7 @@
   font-size: 0.8rem;
 }
 
-.question-avatar .avatar {
+.avatar {
   width: 100px;
   height: 100px;
   background-color: lightpink;
@@ -34,6 +34,6 @@
   margin: 0.7rem 0;
 }
 
-.question-content .button  {
-    width: 100%;
+.question-content .button {
+  width: 100%;
 }

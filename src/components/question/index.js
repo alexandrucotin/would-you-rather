@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter} from "react-router-dom"
+import { withRouter } from "react-router-dom";
 import "./question.css";
 
 import { connect } from "react-redux";
@@ -11,12 +11,12 @@ class Question extends Component {
   };
 
   render() {
-    const { question } = this.props;
+    const { question, user } = this.props;
     return (
       <div className="question-card">
         <div className="question-avatar">
-          <div className="avatar"></div>
-          <p className="name">{question.author}</p>
+          <img className="avatar" src={user.avatarURL} alt={user.name}/>
+          <p className="name">{user.name}</p>
         </div>
         <div className="question-content">
           <div className="question-text">
@@ -28,18 +28,22 @@ class Question extends Component {
           <button
             className="button"
             onClick={(e) => this.toQuestion(e, question.id)}
-          >View poll</button>
+          >
+            View poll
+          </button>
         </div>
       </div>
     );
   }
 }
 
-function mapStateToProps({ questions }, { id }) {
+function mapStateToProps({ questions, users }, { id }) {
   const question = questions[id];
+  const user = users[question.author];
   return {
     id,
     question: question,
+    user,
   };
 }
 
