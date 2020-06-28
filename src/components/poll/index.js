@@ -12,16 +12,16 @@ class Poll extends Component {
     if (question.optionOne.votes.includes(users[authedUser].id)) {
       return (
         <div className="answer-container">
-          <div className="answer first">
-            <h3>You choosed:{question.optionOne.text}</h3>
-            <p>
-              {optionOneTotal} of
-              {total}
+          <div className="answer first selected">
+            <p className="selected-answer">You selected</p>
+            <h3>{question.optionOne.text}</h3>
+            <p className="total-answers">
+              {optionOneTotal} of {total}
             </p>
           </div>
           <div className="answer second">
             <h3>{question.optionTwo.text}</h3>
-            <p>
+            <p className="total-answers">
               {optionTwoTotal} of {total}
             </p>
           </div>
@@ -32,14 +32,14 @@ class Poll extends Component {
         <div className="answer-container">
           <div className="answer first">
             <h3>{question.optionOne.text}</h3>
-            <p>
-              {optionOneTotal} of
-              {total}
+            <p className="total-answers">
+              {optionOneTotal} of {total}
             </p>
           </div>
-          <div className="answer second">
-            <h3>You choosed:{question.optionTwo.text}</h3>
-            <p>
+          <div className="answer second selected">
+            <p className="selected-answer">You selected</p>
+            <h3>{question.optionTwo.text}</h3>
+            <p className="total-answers">
               {optionTwoTotal} of {total}
             </p>
           </div>
