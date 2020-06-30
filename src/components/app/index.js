@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { handleInitialData } from "../../actions/shared";
@@ -16,27 +16,62 @@ import Leaderboard from "../leaderboard";
 import Login from "../login";
 import LoadingBar from "react-redux-loading";
 
+function PrivateRoute({ component: Component, authed, ...rest }) {
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        authed === true ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{ pathname: "/login", state: { from: props.location } }}
+          />
+        )
+      }
+    />
+  );
+}
+
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData());
   }
 
   render() {
-    const { loading } = this.props;
+    const { authed } = this.props;
     return (
       <Router>
         <Fragment>
           <LoadingBar />
-          {loading === true ? null : (
-            <div className="App">
-              <Navbar />
-              <Route path="/" exact component={Dashboard} />
-              <Route path="/question/:id" exact component={Poll} />
-              <Route path="/newquestion" exact component={NewQuestion} />
-              <Route path="/leaderboard" exact component={Leaderboard} />
-              <Route path="/login" exact component={Login} />
-            </div>
-          )}
+          <div className="App">
+            <Navbar />
+            <PrivateRoute
+              authed={authed}
+              path="/"
+              exact
+              component={Dashboard}
+            />
+            <PrivateRoute
+              authed={authed}
+              path="/question/:id"
+              exact
+              component={Poll}
+            />
+            <PrivateRoute
+              authed={authed}
+              path="/newquestion"
+              exact
+              component={NewQuestion}
+            />
+            <PrivateRoute
+              authed={authed}
+              path="/leaderboard"
+              exact
+              component={Leaderboard}
+            />
+            <Route path="/login" exact component={Login} />
+          </div>
         </Fragment>
       </Router>
     );
@@ -45,7 +80,7 @@ class App extends Component {
 
 function mapStateToProps({ authedUser }) {
   return {
-    loading: authedUser === null
+    authed: authedUser !== null,
   };
 }
 

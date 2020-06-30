@@ -31,7 +31,7 @@ class NewQuestion extends Component {
     e.preventDefault();
 
     const { optionOne, optionTwo } = this.state;
-    const { dispatch } = this.props;
+    const { dispatch, history } = this.props;
 
     console.log(
       "This is inside the function handleSubmit in NEW QUESTION. Option one is: ",
@@ -45,6 +45,7 @@ class NewQuestion extends Component {
       optionOne: "",
       optionTwo: "",
     }));
+    history.push("/");
   };
 
   render() {

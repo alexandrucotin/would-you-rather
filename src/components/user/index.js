@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import "./user.css";
 import { connect } from "react-redux";
+
+import "./user.css";
 
 class User extends Component {
   render() {
