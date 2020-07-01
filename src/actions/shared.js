@@ -1,13 +1,7 @@
 import { _getQuestions, _getUsers } from "../utils/_DATA";
 import { receiveQuestions } from "../actions/questions";
 import { receiveUsers } from "../actions/users";
-import {
-  setAuthedUser
-} from "./authedUser"
 import { showLoading, hideLoading } from "react-redux-loading";
-
-
-const authedUser = "johndoe"
 
 export function handleInitialData() {
   return (dispatch) => {
@@ -16,7 +10,6 @@ export function handleInitialData() {
       ([questions, users]) => {
         dispatch(receiveUsers(users));
         dispatch(receiveQuestions(questions));
-        // dispatch(setAuthedUser(authedUser));
         dispatch(hideLoading());
       }
     );

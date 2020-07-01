@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { handleAddQuestion } from "../../actions/questions";
-import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import "./newQuestion.css";
 
