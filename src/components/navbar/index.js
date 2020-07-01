@@ -2,7 +2,7 @@ import React from "react";
 import "./navbar.css";
 import { NavLink } from "react-router-dom";
 
-const Navbar = () => (
+const Navbar = (props) => (
   <nav>
     <NavLink to="/" exact className="logo">
       Would you rather?
@@ -24,7 +24,8 @@ const Navbar = () => (
         </NavLink>
       </li>
     </ul>
-    <div className="profile">+</div>
+    {props.authedUser && <p>Hi {props.authedUser}!</p>}
+    <button onClick={props.handleLogout}>Logout</button>
   </nav>
 );
 
