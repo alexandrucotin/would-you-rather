@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import { handleInitialData } from "../../actions/shared";
 import {setAuthedUser} from "../../actions/authedUser"
+
 // CSS FILE
 import "./app.css";
 

@@ -25,7 +25,11 @@ const Navbar = (props) => (
       </li>
     </ul>
     {props.authedUser && <p>Hi {props.authedUser}!</p>}
-    <button onClick={props.handleLogout}>Logout</button>
+    {props.authedUser && (
+      <button className="button" onClick={props.handleLogout}>
+        Logout
+      </button>
+    )}
   </nav>
 );
 
