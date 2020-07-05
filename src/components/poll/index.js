@@ -48,16 +48,16 @@ class Poll extends Component {
     } else {
       return (
         <div className="answer-container">
-          <div className="answer first">
-            <p>{question.optionOne.text}</p>
-          </div>
-          <div className="answer second">
-            <p>{question.optionTwo.text}</p>
-          </div>
+          <button type="submit" onClick={this.handleOnClick} className="answer first">{question.optionOne.text}</button>
+          <button type="submit" onClick={this.handleOnClick} className="answer second">{question.optionTwo.text}</button>
         </div>
       );
     }
   };
+
+  handleOnClick = (e) => {
+    console.log(e.target)
+  }
 
   render() {
     const { questions, users, authedUser } = this.props;

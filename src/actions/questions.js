@@ -1,4 +1,5 @@
 import { _saveQuestion } from "../utils/_DATA";
+import { updateUserQuestions } from "./users";
 import { showLoading, hideLoading } from "react-redux-loading";
 
 export const ADD_QUESTION = "ADD_QUESTION";
@@ -14,7 +15,7 @@ function addQuestion(question) {
 
 export function handleAddQuestion(optionOneText, optionTwoText) {
   return (dispatch, getState) => {
-    const { authedUser } = getState();
+    const { users, authedUser } = getState();
 
     dispatch(showLoading());
 
@@ -23,7 +24,10 @@ export function handleAddQuestion(optionOneText, optionTwoText) {
       optionTwoText,
       author: authedUser,
     })
-      .then((question) => dispatch(addQuestion(question)))
+      .then((question) => {
+        dispatch(addQuestion(question));
+        dispatch(updateUserQuestions(users[authedUser], question.id));
+      })
       .then(() => dispatch(hideLoading()));
   };
 }

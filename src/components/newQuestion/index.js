@@ -11,7 +11,6 @@ class NewQuestion extends Component {
   };
 
   handleChangeOptionOne = (e) => {
-    console.log(e.target.value);
     const optionOne = e.target.value;
     this.setState(() => ({
       optionOne,
@@ -19,7 +18,6 @@ class NewQuestion extends Component {
   };
 
   handleChangeOptionTwo = (e) => {
-    console.log(e.target.value);
     const optionTwo = e.target.value;
     this.setState(() => ({
       optionTwo,
@@ -32,12 +30,6 @@ class NewQuestion extends Component {
     const { optionOne, optionTwo } = this.state;
     const { dispatch, history } = this.props;
 
-    console.log(
-      "This is inside the function handleSubmit in NEW QUESTION. Option one is: ",
-      optionOne,
-      "option two is: ",
-      optionTwo
-    );
     dispatch(handleAddQuestion(optionOne, optionTwo));
 
     this.setState(() => ({

@@ -50,6 +50,7 @@
 }
 
 .answer {
+  border: none;
   padding: 5rem;
   display: flex;
   flex-direction: column;
