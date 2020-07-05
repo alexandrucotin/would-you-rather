@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import "./poll.css";
 import { connect } from "react-redux";
+import { handleToggleQuestion } from "../../actions/questions";
+import "./poll.css";
 
 class Poll extends Component {
   handleRender = (users, authedUser, question) => {
@@ -48,16 +49,34 @@ class Poll extends Component {
     } else {
       return (
         <div className="answer-container">
-          <button type="submit" onClick={this.handleOnClick} className="answer first">{question.optionOne.text}</button>
-          <button type="submit" onClick={this.handleOnClick} className="answer second">{question.optionTwo.text}</button>
+          <button
+            type="submit"
+            onClick={this.handleOnClick}
+            id="optionOne"
+            className="answer first"
+          >
+            {question.optionOne.text}
+          </button>
+          <button
+            type="submit"
+            onClick={this.handleOnClick}
+            id="optionTwo"
+            className="answer second"
+          >
+            {question.optionTwo.text}
+          </button>
         </div>
       );
     }
   };
 
   handleOnClick = (e) => {
-    console.log(e.target)
-  }
+    const { id } = this.props.match.params;
+    const answer = e.target.id;
+    const { dispatch } = this.props;
+
+    dispatch(handleToggleQuestion(id, answer))
+  };
 
   render() {
     const { questions, users, authedUser } = this.props;

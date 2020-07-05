@@ -1,5 +1,5 @@
-import { _saveQuestion } from "../utils/_DATA";
-import { updateUserQuestions } from "./users";
+import { _saveQuestion, _saveQuestionAnswer } from "../utils/_DATA";
+import { updateUserQuestions, updateUserAnswers } from "./users";
 import { showLoading, hideLoading } from "react-redux-loading";
 
 export const ADD_QUESTION = "ADD_QUESTION";
@@ -39,11 +39,24 @@ export function receiveQuestions(questions) {
   };
 }
 
-function toggleQuestion({ id, authedUser, optionChosen }) {
+function toggleQuestion(authedUser, qid, answer) {
   return {
     type: TOGGLE_QUESTION,
-    id,
     authedUser,
-    optionChosen,
+    qid,
+    answer,
+  };
+}
+
+export function handleToggleQuestion(qid, answer) {
+  return (dispatch, getState) => {
+    const { authedUser } = getState();
+    return _saveQuestionAnswer({
+      authedUser,
+      qid,
+      answer,
+    }).then(() => {
+      dispatch(toggleQuestion(authedUser, qid, answer));
+    });
   };
 }
