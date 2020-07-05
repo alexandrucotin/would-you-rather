@@ -10,7 +10,7 @@ class Leaderboard extends Component {
         <h3 className="leaderboard-title">Leaderboard</h3>
         <ul className="leaderboard-list">
         {this.props.userIds.map((id) => (
-              <User id={id} />
+              <User key={id} id={id} />
           ))}
         </ul>
       </div>

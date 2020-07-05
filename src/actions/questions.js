@@ -51,13 +51,16 @@ function toggleQuestion(authedUser, qid, answer) {
 export function handleToggleQuestion(qid, answer) {
   return (dispatch, getState) => {
     const { authedUser } = getState();
+    dispatch(showLoading());
     return _saveQuestionAnswer({
       authedUser,
       qid,
       answer,
-    }).then(() => {
-      dispatch(toggleQuestion(authedUser, qid, answer));
-      dispatch(updateUserAnswers(authedUser, qid, answer));
-    });
+    })
+      .then(() => {
+        dispatch(toggleQuestion(authedUser, qid, answer));
+        dispatch(updateUserAnswers(authedUser, qid, answer));
+      })
+      .then(() => dispatch(hideLoading()));
   };
 }
