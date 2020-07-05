@@ -57,6 +57,7 @@ export function handleToggleQuestion(qid, answer) {
       answer,
     }).then(() => {
       dispatch(toggleQuestion(authedUser, qid, answer));
+      dispatch(updateUserAnswers(authedUser, qid, answer));
     });
   };
 }
