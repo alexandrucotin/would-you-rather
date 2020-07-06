@@ -14,7 +14,7 @@ const Navbar = (props) => (
         </NavLink>
       </li>
       <li>
-        <NavLink to="/newquestion" exact>
+        <NavLink to="/add" exact>
           new question
         </NavLink>
       </li>

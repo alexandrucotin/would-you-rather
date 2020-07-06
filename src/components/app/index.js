@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { handleInitialData } from "../../actions/shared";
-import {setAuthedUser} from "../../actions/authedUser"
+import { setAuthedUser } from "../../actions/authedUser";
 
 // CSS FILE
 import "./app.css";
@@ -25,9 +25,10 @@ function PrivateRoute({ component: Component, authed, ...rest }) {
         authed === true ? (
           <Component {...props} />
         ) : (
-          <Redirect
-            to={{ pathname: "/login", state: { from: props.location } }}
-          />
+          // <Redirect
+          //   to={{ pathname: "/login", state: { from: props.location } }}
+          // />
+          <Login />
         )
       }
     />
@@ -40,8 +41,8 @@ class App extends Component {
   }
 
   handleLogout = () => {
-    this.props.dispatch(setAuthedUser(null))
-  }
+    this.props.dispatch(setAuthedUser(null));
+  };
   render() {
     const { authed, authedUser } = this.props;
     return (
@@ -49,7 +50,7 @@ class App extends Component {
         <Fragment>
           <LoadingBar />
           <div className="App">
-            <Navbar authedUser={authedUser} handleLogout={this.handleLogout}/>
+            <Navbar authedUser={authedUser} handleLogout={this.handleLogout} />
             <PrivateRoute
               authed={authed}
               path="/"
@@ -64,7 +65,7 @@ class App extends Component {
             />
             <PrivateRoute
               authed={authed}
-              path="/newquestion"
+              path="/add"
               exact
               component={NewQuestion}
             />

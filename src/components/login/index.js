@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 import { setAuthedUser } from "../../actions/authedUser";
 import "./login.css";
@@ -19,7 +20,7 @@ class Login extends Component {
   handleOnClick = (e) => {
     const { dispatch, history } = this.props;
     dispatch(setAuthedUser(this.state.authedUser));
-    history.push("/")
+    history.push(window.location.pathname);
   };
 
   render() {
@@ -57,4 +58,4 @@ class Login extends Component {
   }
 }
 
-export default connect()(Login);
+export default withRouter(connect()(Login));
