@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { handleToggleQuestion } from "../../actions/questions";
 import "./poll.css";
 
+import Page404 from "../page404";
+
 class Poll extends Component {
   handleRender = (users, authedUser, question) => {
     const optionOneTotal = question.optionOne.votes.length;
@@ -75,15 +77,17 @@ class Poll extends Component {
     const answer = e.target.id;
     const { dispatch } = this.props;
 
-    dispatch(handleToggleQuestion(id, answer))
+    dispatch(handleToggleQuestion(id, answer));
   };
 
   render() {
     const { questions, users, authedUser } = this.props;
     const { id } = this.props.match.params;
     const question = questions[id];
+    if (question === undefined) {
+      return <Page404 />;
+    }
     const user = users[question.author];
-
     return (
       <div className="poll-container">
         <div className="info">
