@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from "react";
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { handleInitialData } from "../../actions/shared";
@@ -22,14 +22,7 @@ function PrivateRoute({ component: Component, authed, ...rest }) {
     <Route
       {...rest}
       render={(props) =>
-        authed === true ? (
-          <Component {...props} />
-        ) : (
-          // <Redirect
-          //   to={{ pathname: "/login", state: { from: props.location } }}
-          // />
-          <Login />
-        )
+        authed === true ? <Component {...props} /> : <Login />
       }
     />
   );

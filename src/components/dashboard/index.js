@@ -1,58 +1,49 @@
 import React, { Component } from "react";
 import Question from "../question";
 import "./dashboard.css";
-import { Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
 
 class Dashboard extends Component {
   render() {
-    const { authedUser, questions } = this.props;
-    if (authedUser === null) {
-      return <Redirect to="/login" />;
-    } else {
-      return (
-        <div className="container">
-          <div className="questions-list">
-            <h3 className="title">Unanswer questions</h3>
-            {Object.keys(questions).map((key) => {
-              if (
-                questions[key].optionOne.votes.includes(authedUser) === false &&
-                questions[key].optionTwo.votes.includes(authedUser) === false
-              ) {
-                return (
-                  <Question
-                    key={questions[key].timestamp}
-                    id={questions[key].id}
-                  />
-                );
-              }
-            })}
-          </div>
-          <div className="questions-list">
-            <h3 className="title">Answer questions</h3>
-            {Object.keys(questions).map((key) => {
-              if (
-                questions[key].optionOne.votes.includes(authedUser) === true ||
-                questions[key].optionTwo.votes.includes(authedUser) === true
-              ) {
-                return (
-                  <Question
-                    key={questions[key].timestamp}
-                    id={questions[key].id}
-                  />
-                );
-              }
-            })}
-          </div>
+    const { unansweredQuestions, answeredQuestions } = this.props;
+    return (
+      <div className="container">
+        <div className="questions-list">
+          <h3 className="title">Unanswer questions</h3>
+          {unansweredQuestions.map((question) => (
+            <Question key={question} id={question} />
+          ))}
         </div>
-      );
-    }
+        <div className="questions-list">
+          <h3 className="title">Answer questions</h3>
+          {answeredQuestions.map((question) => (
+            <Question key={question} id={question} />
+          ))}
+        </div>
+      </div>
+    );
   }
 }
 
 function mapStateToProps({ authedUser, questions }) {
+  const answeredQuestions = Object.keys(questions)
+    .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
+    .filter(
+      (key) =>
+        questions[key].optionOne.votes.includes(authedUser) ||
+        questions[key].optionTwo.votes.includes(authedUser)
+    );
+  const unansweredQuestions = Object.keys(questions)
+    .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
+    .filter(
+      (key) =>
+        questions[key].optionOne.votes.includes(authedUser) === false &&
+        questions[key].optionTwo.votes.includes(authedUser) === false
+    );
   return {
+    unansweredQuestions,
+    answeredQuestions,
     authedUser,
     questions,
   };

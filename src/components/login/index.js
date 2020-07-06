@@ -7,7 +7,7 @@ import "./login.css";
 
 class Login extends Component {
   state = {
-    authedUser: "select a user",
+    authedUser: "sarahedo",
   };
 
   handleOnChange = (e) => {
@@ -29,15 +29,10 @@ class Login extends Component {
         <h3 className="title">Login</h3>
         <select
           onChange={this.handleOnChange}
-          defaultValue={this.state.value}
+          value={this.state.value}
           className="login-dropdown"
         >
-          <option
-            value="select a user"
-            selected={true}
-            disabled="disabled"
-            className="dropdown-option"
-          >
+          <option defaultValue disabled value="select a user..." className="dropdown-option">
             select a user...
           </option>
           <option value="sarahedo" className="dropdown-option">
